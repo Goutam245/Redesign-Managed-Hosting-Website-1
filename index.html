@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corefinity - Professional Managed Hosting Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --primary: #0052CC;
+            --primary-dark: #003D99;
+            --secondary: #00A3FF;
+            --accent: #FF6B35;
+            --light: #F5F9FF;
+            --dark: #1A2B4D;
+            --gray: #6B7A90;
+            --light-gray: #E6ECF5;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: #e55a2b;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background-color: var(--light);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-left: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+            margin: 0 1rem;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.has-dropdown::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Mega Menu */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100vw;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-top: 1px solid var(--light-gray);
+            padding: 2rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .mega-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-menu-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .mega-menu-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .mega-menu-links {
+            list-style: none;
+        }
+
+        .mega-menu-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .mega-menu-links a {
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+            padding: 0.25rem 0;
+        }
+
+        .mega-menu-links a:hover {
+            color: var(--primary);
+        }
+
+        .mega-menu-links a i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+            width: 16px;
+            text-align: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 10rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMDUyQ0MiLz48cGF0aCBkPSJNMCw1MDBMMTAwMCw1MDBMMTAwMCw3NTBMMCw3NTBaIiBmaWxsPSIjMDA5OUZGIiBmaWxsLW9wYWNpdHk9IjAuMyIvPjxwYXRoIGQ9Ik0wLDUwMEwxMDAwLDUwMEwxMDAwLDEwMDBMMCwxMDAwWiIgZmlsbD0iIzAwOTlGRiIgZmlsbC1vcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        /* Clients Section */
+        .clients {
+            background-color: var(--light-gray);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .client-logo img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary);
+        }
+
+        /* Solutions Section */
+        .solutions-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Agency Section */
+        .agency-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .agency-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .agency-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Support Section */
+        .support-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .faq-container {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background-color: var(--white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 300px;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.25rem;
+            }
+            
+            .hero-image {
+                width: 45%;
+            }
+            
+            .mega-menu-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .mega-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border-top: none;
+                padding: 1rem 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+            }
+            
+            .mega-menu.active {
+                display: block;
+            }
+            
+            .mega-menu-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                margin-top: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .agency-content,
+            .support-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .agency-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .features-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .agency-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .solutions-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Placeholder for logo -->
+                <div class="logo-text">COREFINITY</div>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#solutions" class="nav-link has-dropdown">Solutions</a>
+                        <div class="mega-menu">
+                            <div class="container mega-menu-container">
+                                <div class="mega-menu-column">
+                                    <h4>Platform Solutions</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#magento"><i class="fas fa-shopping-cart"></i> Magento Hosting</a></li>
+                                        <li><a href="#laravel"><i class="fas fa-code"></i> Laravel Hosting</a></li>
+                                        <li><a href="#wordpress"><i class="fab fa-wordpress"></i> WordPress Hosting</a></li>
+                                        <li><a href="#shopify"><i class="fas fa-store"></i> Shopify Hosting</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Infrastructure</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#cloud"><i class="fas fa-cloud"></i> Cloud Hosting</a></li>
+                                        <li><a href="#vps"><i class="fas fa-server"></i> VPS Hosting</a></li>
+                                        <li><a href="#dedicated"><i class="fas fa-database"></i> Dedicated Servers</a></li>
+                                        <li><a href="#hybrid"><i class="fas fa-network-wired"></i> Hybrid Solutions</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Services</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#migration"><i class="fas fa-truck-moving"></i> Migration Services</a></li>
+                                        <li><a href="#security"><i class="fas fa-shield-alt"></i> Security Solutions</a></li>
+                                        <li><a href="#backup"><i class="fas fa-hdd"></i> Backup & Recovery</a></li>
+                                        <li><a href="#monitoring"><i class="fas fa-chart-line"></i> Performance Monitoring</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Resources</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#case-studies"><i class="fas fa-book-open"></i> Case Studies</a></li>
+                                        <li><a href="#whitepapers"><i class="fas fa-file-alt"></i> Whitepapers</a></li>
+                                        <li><a href="#webinars"><i class="fas fa-video"></i> Webinars</a></li>
+                                        <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#agency" class="nav-link">Agency</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#support" class="nav-link">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Managed Hosting for High-Performance Websites</h1>
+                <p>Corefinity provides enterprise-grade hosting solutions with 24/7 expert support, ensuring your website runs at peak performance with maximum security and reliability.</p>
+                <div class="hero-buttons">
+                    <a href="#solutions" class="btn btn-accent">Explore Solutions</a>
+                    <a href="#support" class="btn btn-secondary">Contact Sales</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for hero image -->
+                <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="50" width="500" height="300" rx="10" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="150" r="40" fill="rgba(255,255,255,0.2)"/>
+                    <rect x="150" y="220" width="300" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+                    <rect x="150" y="250" width="200" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+                    <rect x="150" y="280" width="250" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Why Choose Corefinity?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Blazing Fast Performance</h3>
+                    <p>Our optimized infrastructure ensures your website loads in milliseconds, improving user experience and SEO rankings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Multi-layered security protocols, DDoS protection, and regular audits keep your data safe from threats.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Expert Support</h3>
+                    <p>Our hosting specialists are available round the clock to assist with any issues or questions you may have.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>99.9% Uptime Guarantee</h3>
+                    <p>We guarantee your website will be available when your customers need it with our robust infrastructure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Easy Scalability</h3>
+                    <p>Easily scale your resources up or down as your business grows without any downtime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Managed Services</h3>
+                    <p>Focus on your business while we handle server maintenance, updates, and optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section section-light clients">
+        <div class="container">
+            <h2>Trusted by Industry Leaders</h2>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <!-- Placeholder for client logo -->
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 1</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 2</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 3</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 4</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 5</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                        <span style="font-weight: bold; color: #333;">Client 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-track" id="testimonialTrack">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"Corefinity's Magento hosting solution transformed our e-commerce performance. Our site loads 60% faster, and their support team is incredibly responsive."</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <!-- Placeholder for avatar -->
+                                        <div style="width: 50px; height: 50px; background-color: #0052CC; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JS</div>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Jennifer Smith</h4>
+                                        <p>CTO, TechRetail Inc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"The migration to Corefinity was seamless. Their Laravel-optimized servers have significantly improved our application's response times and reliability."</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <div style="width: 50px; height: 50px; background-color: #00A3FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MR</div>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Michael Rodriguez</h4>
+                                        <p>Lead Developer, AppSolutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"As an agency, we rely on Corefinity for all our client hosting needs. The performance and security give us peace of mind, and their support is exceptional."</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <div style="width: 50px; height: 50px; background-color: #FF6B35; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AK</div>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Amanda Kim</h4>
+                                        <p>Director, DigitalAgency Pro</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section section-light" id="solutions">
+        <div class="container">
+            <h2>Specialized Hosting Solutions</h2>
+            
+            <div class="solutions-tabs">
+                <button class="tab-btn active" data-tab="magento">Magento Hosting</button>
+                <button class="tab-btn" data-tab="laravel">Laravel Hosting</button>
+                <button class="tab-btn" data-tab="wordpress">WordPress Hosting</button>
+                <button class="tab-btn" data-tab="cloud">Cloud Hosting</button>
+            </div>
+            
+            <div class="tab-content active" id="magento-tab">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Optimized Performance</h3>
+                        <p>Our Magento-optimized servers are configured for maximum speed with advanced caching, CDN integration, and dedicated resources.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Enhanced Security</h3>
+                        <p>Protect your store with web application firewalls, regular security patches, and PCI compliance features.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>E-commerce Ready</h3>
+                        <p>Fully configured for Magento commerce with optimized database settings, Elasticsearch, and Redis support.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Explore Magento Plans</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="laravel-tab">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Laravel-Optimized Stack</h3>
+                        <p>Pre-configured with Nginx, PHP-FPM, Redis, and MySQL/MariaDB optimized specifically for Laravel applications.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Easy Deployment</h3>
+                        <p>Deploy your Laravel applications with Git integration, Composer, and automated deployment pipelines.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </div>
+                        <h3>Horizontal Scaling</h3>
+                        <p>Easily scale your Laravel application across multiple servers with load balancing and database clustering.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Explore Laravel Plans</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="wordpress-tab">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fab fa-wordpress"></i>
+                        </div>
+                        <h3>Managed WordPress</h3>
+                        <p>Automatic updates, daily backups, and security monitoring specifically designed for WordPress websites.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Staging Environments</h3>
+                        <p>Create staging sites with one click to test changes before pushing them to your live website.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimized</h3>
+                        <p>Fast loading times and optimized server configuration to improve your search engine rankings.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Explore WordPress Plans</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="cloud-tab">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Flexible Cloud Infrastructure</h3>
+                        <p>Scalable cloud resources that grow with your business, with pay-as-you-go pricing and instant provisioning.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>High Availability</h3>
+                        <p>Distributed across multiple data centers with automatic failover to ensure maximum uptime.</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Managed Kubernetes</h3>
+                        <p>Container orchestration with managed Kubernetes clusters for modern application deployment.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Explore Cloud Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Section -->
+    <section class="section" id="agency">
+        <div class="container">
+            <h2>Partner with Corefinity</h2>
+            <div class="agency-content">
+                <div class="agency-text">
+                    <h3>Designed for Digital Agencies</h3>
+                    <p>Corefinity offers specialized hosting solutions tailored to the needs of digital agencies. We understand that your clients rely on you for performance, security, and reliability.</p>
+                    <p>Our agency partnership program provides white-label hosting, dedicated account managers, and priority support to ensure your projects run smoothly.</p>
+                    
+                    <div class="agency-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Agency Partners</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Uptime SLA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Expert Support</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary mt-4">Learn About Our Agency Program</a>
+                </div>
+                <div class="agency-image">
+                    <!-- Placeholder for agency image -->
+                    <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <span style="font-weight: bold; color: #333; font-size: 1.2rem;">Agency Partnership Visual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section section-light" id="support">
+        <div class="container">
+            <h2>Support & Resources</h2>
+            <div class="support-container">
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                What level of support do you provide?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We offer 24/7/365 expert support through multiple channels including live chat, phone, and email. Our average response time is under 5 minutes for critical issues.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Do you offer migration services?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, we provide free migration services for all new customers. Our team will handle the entire migration process with minimal downtime for your website.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                What security measures are in place?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Our security includes DDoS protection, web application firewalls, malware scanning, regular security patches, and isolated customer environments.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Can I upgrade my plan as my business grows?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Absolutely! All our hosting plans are scalable. You can upgrade your resources with just a few clicks, and the changes take effect immediately with no downtime.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Do you offer SLAs for enterprise clients?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes, we provide comprehensive Service Level Agreements for enterprise clients that guarantee 99.9% uptime, with financial compensation if we fail to meet our commitments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <h3>Contact Our Team</h3>
+                    <div class="contact-form">
+                        <form id="supportForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Interest</label>
+                                <select id="service" class="form-control">
+                                    <option value="">Select a service</option>
+                                    <option value="magento">Magento Hosting</option>
+                                    <option value="laravel">Laravel Hosting</option>
+                                    <option value="wordpress">WordPress Hosting</option>
+                                    <option value="cloud">Cloud Hosting</option>
+                                    <option value="agency">Agency Program</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Elevate Your Hosting Experience?</h2>
+            <p>Join thousands of satisfied customers who trust Corefinity for their mission-critical hosting needs.</p>
+            <a href="#" class="btn btn-accent">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Corefinity</h4>
+                    <p>Premium managed hosting solutions for businesses of all sizes. Performance, security, and reliability you can count on.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Magento Hosting</a></li>
+                        <li><a href="#">Laravel Hosting</a></li>
+                        <li><a href="#">WordPress Hosting</a></li>
+                        <li><a href="#">Cloud Hosting</a></li>
+                        <li><a href="#">VPS Hosting</a></li>
+                        <li><a href="#">Dedicated Servers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Server Status</a></li>
+                        <li><a href="#">Migration Services</a></li>
+                        <li><a href="#">Support Plans</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Corefinity. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Mega Menu Functionality
+        const megaMenuItems = document.querySelectorAll('.nav-item');
+        
+        megaMenuItems.forEach(item => {
+            const megaMenu = item.querySelector('.mega-menu');
+            
+            if (megaMenu) {
+                item.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 768) {
+                        megaMenu.classList.add('active');
+                    }
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    if (window.innerWidth > 768) {
+                        megaMenu.classList.remove('active');
+                    }
+                });
+                
+                // For mobile, toggle on click
+                const navLink = item.querySelector('.nav-link');
+                navLink.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        megaMenu.classList.toggle('active');
+                    }
+                });
+            }
+        });
+        
+        // Testimonial Slider
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function goToSlide(slideIndex) {
+            testimonialTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            // Update active dot
+            sliderDots.forEach(dot => dot.classList.remove('active'));
+            sliderDots[slideIndex].classList.add('active');
+            
+            currentSlide = slideIndex;
+        }
+        
+        sliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = parseInt(dot.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+            });
+        });
+        
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % sliderDots.length;
+            goToSlide(currentSlide);
+        }, 5000);
+        
+        // Solutions Tabs
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to current button and content
+                button.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Support Form Submission
+        const supportForm = document.getElementById('supportForm');
+        
+        supportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server
+            // For this demo, we'll just show an alert
+            alert('Thank you for your message! Our team will get back to you soon.');
+            supportForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Close mega menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-item') && window.innerWidth <= 768) {
+                document.querySelectorAll('.mega-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
